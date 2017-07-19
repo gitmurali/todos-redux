@@ -5,17 +5,17 @@ import TodoList from '../containers/todos_list';
 class App extends Component {
     render() {
         return (
-            <div class="container-fluid text-center">
-                <div class="row content">
-                    <div class="col-sm-4 sidenav"></div>
-                    <div class="col-sm-4 text-left">
+            <div className="container-fluid text-center">
+                <div className="row content">
+                    <div className="col-sm-4 sidenav"></div>
+                    <div className="col-sm-4 text-left">
                         <h1>TODO: =></h1>
-                        <div className="">
+                        <div>
                             <TodoAdd />
                             <TodoList />
                         </div>
                     </div>
-                    <div class="col-sm-4 sidenav"></div>
+                    <div className="col-sm-4 sidenav"></div>
                 </div>
             </div>
         );

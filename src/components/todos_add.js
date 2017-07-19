@@ -39,6 +39,7 @@ class TodosAdd extends Component {
                                id="todoInput"
                                placeholder="Add Todo"
                                className="form-control"
+                               autoComplete="off"
                                onChange={this.handleChange}
                                value={this.state.term}/>
                         <button className="btn btn-danger" type="submit">Add</button>
