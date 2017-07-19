@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {deleteTodo} from '../actions';
+import {TodoItem} from '../components/todo_item';
 
 class TodosList extends Component {
 
@@ -16,14 +16,9 @@ class TodosList extends Component {
     renderTodoList() {
         return this.props.todos.map((todo, index) => {
             return (
-                <li className="list-group-item" key={index}>
-                    {todo}
-                        <button type="button"
-                                style={deleteBtnStyle}
-                                className="btn btn-danger"
-                                onClick={() => { this.deleteTodo(index) }}>Delete
-                        </button>
-                </li>
+                <div>
+                    <TodoItem todoItem={todo} indexKey={index} deleteTodo={this.deleteTodo.bind(this)}/>
+                </div>
             );
         });
     }
@@ -43,11 +38,5 @@ TodosList.defaultProps = {};
 function mapStateToProps({todos}) {
     return {todos};
 }
-
-const deleteBtnStyle = {
-    float: 'right',
-    position: 'relative',
-    top: '-.4em'
-};
 
 export default connect(mapStateToProps, {deleteTodo})(TodosList);
