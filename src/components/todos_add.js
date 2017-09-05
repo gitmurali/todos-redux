@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {addTodo} from '../actions';
-import {connect} from 'react-redux';
 
 class TodosAdd extends Component {
 
@@ -25,7 +23,7 @@ class TodosAdd extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        this.props.addTodo(this.state.term);
+        this.props.onAddTodo(this.state.term);
         this.clearInput();
     }
 
@@ -53,4 +51,4 @@ class TodosAdd extends Component {
 TodosAdd.propTypes = {};
 TodosAdd.defaultProps = {};
 
-export default connect(null, {addTodo})(TodosAdd);
+export default TodosAdd;

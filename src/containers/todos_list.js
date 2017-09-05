@@ -1,42 +1,24 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {deleteTodo} from '../actions';
-import {TodoItem} from '../components/todo_item';
+import TodosList from '../components/todos_list';
+import { connect } from 'react-redux'
+import { addTodo, deleteTodo } from '../actions'
 
-class TodosList extends Component {
+const mapStateToProps = (state, props) =>
+    ({
+        todos: state.todos,
+    })
 
-    constructor(props) {
-        super(props);
-    }
+const mapDispatchToProps = disptach =>
+    ({
+        onDeleteTodo(id) {
+            disptach(
+                deleteTodo(id)
+            )
+        },
+        onAddTodo(value) {
+            disptach(
+                addTodo(value)
+            )
+        },
+    })
 
-    deleteTodo(id) {
-        this.props.deleteTodo(id);
-    }
-
-    renderTodoList() {
-        return this.props.todos.map((todo, index) => {
-            return (
-                <div>
-                    <TodoItem todoItem={todo} indexKey={index} deleteTodo={this.deleteTodo.bind(this)}/>
-                </div>
-            );
-        });
-    }
-
-    render() {
-        return (
-            <ul className="list-group marginTop">
-                {this.renderTodoList()}
-            </ul>
-        );
-    }
-}
-
-TodosList.propTypes = {};
-TodosList.defaultProps = {};
-
-function mapStateToProps({todos}) {
-    return {todos};
-}
-
-export default connect(mapStateToProps, {deleteTodo})(TodosList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodosList)

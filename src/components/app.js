@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import TodoAdd from './todos_add';
 import TodoList from '../containers/todos_list';
 
 class App extends Component {
@@ -11,7 +10,6 @@ class App extends Component {
                     <div className="col-sm-4 text-left">
                         <h1>TODO: =></h1>
                         <div>
-                            <TodoAdd />
                             <TodoList />
                         </div>
                     </div>
